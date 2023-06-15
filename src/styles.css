@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.center-justification {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(to top left, #952e01, #ba4d11, #e18043, transparent), url(https://img.buzzfeed.com/buzzfeed-static/static/2017-05/31/17/asset/buzzfeed-prod-fastlane-02/sub-buzz-15119-1496265542-4.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto);
+  margin: 0 0 1rem 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
