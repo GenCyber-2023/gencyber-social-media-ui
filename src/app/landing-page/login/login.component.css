@@ -1,6 +1,6 @@
 .welcome-login {
-  height: 100%;
-  width: 50%;
+  height: 50%;
+  width: 100%;
   margin: 2rem;
   display: flex;
   align-items: center;
@@ -9,12 +9,7 @@
   background-color: rgba(245, 245, 245, 0.75);
   padding: 2rem;
 }
-.center-justification {
-  display: flex;
-  justify-content: center;
-  width: 60%;
-  height: 100%;
-}
+
 .box_shadow {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -57,8 +52,7 @@
   flex-direction: column;
   justify-content: center;
   justify-items: center;
-  height: 100%;
-  width: 80%;
+  width: 100%;
 }
 
 .input {
@@ -107,5 +101,6 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 100vh; /* Set the height of the container to the full viewport height */
+  height: 100vh;
+  /* Set the height of the container to the full viewport height */
 }

@@ -1,23 +1,8 @@
-<div class="center-justification">
-  <div class="welcome-login box_shadow">
-    <form class="form-container">
-      <div class="login-box">
-        <h1 class="headerFont">Login</h1>
-		    <span>
-			    <label class="labelFont" for="username"> Username: </label>
-			    <input class="input box_shadow" formControlName="username" id="username" placeholder="Enter Username" type='text'/>
-      <!--			<div *ngIf="!validUsername()">Please enter a username</div>-->
-		    </span>
-        <span>
-			    <label class="labelFont" for="password"> Password: </label>
-			    <input class="input box_shadow" formControlName="password" id="password" placeholder="Enter Password" type='password'/>
-          <!--			<div *ngIf="!validPassword()"> Please enter a password</div>-->
-		    </span>
-        <span class="button-container">
-			    <button class="login-button box_shadow" type="button">Login</button>
-		    </span>
-      </div>
-    </form>
+<div style="display: flex; flex-direction: column; align-items: center; height: 100%; padding-bottom: -4rem;">
+  <h1 class="headerFont">Welcome to TigerTalk!</h1>
+  <h2 class="labelFont">Come roar with us!</h2>
 
-  </div>
+  <ng-container class="center-justification" style="display: flex; width: 80%; height: 100%; justify-content: center;">
+    <app-login class="center-justification"></app-login>
+  </ng-container>
 </div>

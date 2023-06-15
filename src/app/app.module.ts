@@ -17,12 +17,14 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatRadioModule} from "@angular/material/radio";
 import {NavbarComponent} from "./navbar/navbar.component";
+import { LoginComponent } from './landing-page/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     NavbarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
