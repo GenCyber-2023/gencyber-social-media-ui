@@ -18,6 +18,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatRadioModule} from "@angular/material/radio";
 import {NavbarComponent} from "./navbar/navbar.component";
 import { LoginComponent } from './landing-page/login/login.component';
+import { NewsFeedComponent } from './home/news-feed/news-feed.component';
+import { PostComponent } from './home/news-feed/post-feed/post.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { LoginComponent } from './landing-page/login/login.component';
     LandingPageComponent,
     NavbarComponent,
     LoginComponent,
+    NewsFeedComponent,
+    PostComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

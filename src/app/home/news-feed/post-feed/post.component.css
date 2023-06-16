@@ -1,0 +1,39 @@
+.post-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  border-radius: 50px;
+  width: 80%;
+  background-image: linear-gradient(90deg, #ffffff, #1c1c1c, transparent);
+}
+
+.box_shadow {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+}
+  .img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+  }
+
+
+.headerFont {
+  margin-bottom: -0.5rem;
+  height: 50px;
+  font-size: 40px;
+  font-weight: 500;
+  background-image: linear-gradient(#000000, #090303);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  display: flex;
+  justify-content: space-around;
+}

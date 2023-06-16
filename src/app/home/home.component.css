@@ -1,0 +1,8 @@
+.center-justification {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 80%;
+  height: 100%;
+  background-color: white;
+  flex-direction: column;
+}
