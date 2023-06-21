@@ -13,4 +13,5 @@ body {
   background-image: linear-gradient(to top left, #6a2300, #ba4d11, transparent), url(https://cdn11.bigcommerce.com/s-nq6l4syi/images/stencil/1280x1280/products/35789/270770/90471-1024__06389.1613062885.jpg?c=2?imbypass=on);
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: hidden;
 }

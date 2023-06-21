@@ -9,11 +9,8 @@ import {Post} from "./post-feed/post.model";
 export class NewsFeedComponent implements OnInit {
   @Input()
   public posts: Post[] =[];
-
   constructor(){
   }
-
   ngOnInit(): void {
   }
-
 }
