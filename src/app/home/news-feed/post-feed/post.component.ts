@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "./post.model";
 
+
 @Component({
   selector: 'app-post-feed',
   templateUrl: './post.component.html',
