@@ -1,8 +1,8 @@
 
-<div class="welcome-login box_shadow">
-<form class="form-container">
+<div class="welcome-login box_shadow pt-5 pb-5">
+<form (ngSubmit)="submit()" [formGroup]="form" class="form-container">
   <div class="login-box">
-    <h1 class="headerFont">Sign Up</h1>
+    <h1 class="headerFont">Login</h1>
     <div *ngIf="errorMessage">{{errorMessage}}</div>
     <span>
       <label class="labelFont" for="username"> Username: </label>
@@ -14,9 +14,10 @@
       <label class="labelFont" for="password"> Password: </label>
       <input class="input box_shadow" formControlName="password" id="password" placeholder="Enter Password" type='password'/>
     </span>
-    <span class="button-container">
+    <div class="button-container">
       <button (click)="submit()" class="login-button box_shadow" type="button">Login</button>
-    </span>
+      <button routerLink="/landing-page/signup" class="login-button box_shadow bg-black" type="button">Sign Up</button>
+    </div>
   </div>
 </form>
 </div>

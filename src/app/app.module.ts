@@ -21,6 +21,7 @@ import { LoginComponent } from './landing-page/login/login.component';
 import { NewsFeedComponent } from './home/news-feed/news-feed.component';
 import { PostComponent } from './home/news-feed/post-feed/post.component';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './landing-page/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HomeComponent } from './home/home.component';
     NewsFeedComponent,
     PostComponent,
     HomeComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

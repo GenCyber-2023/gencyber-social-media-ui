@@ -1,0 +1,26 @@
+
+
+  <div class="container-fluid h-75 w-75 d-flex justify-content-center">
+  <div class="welcome-login box_shadow pt-5 pb-5 align-content-center h-75">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-container">
+    <div class="login-box">
+      <h1 class="headerFont">Sign Up</h1>
+      <div *ngIf="errorMessage">{{errorMessage}}</div>
+      <span>
+      <label class="labelFont" for="username"> Username: </label>
+      <input class="input box_shadow" formControlName="username" id="username" placeholder="Enter Username" type='text'/>
+        <!--			<div *ngIf="!validUsername()">Please enter a username</div>-->
+
+    </span>
+      <span>
+      <label class="labelFont" for="password"> Password: </label>
+      <input class="input box_shadow" formControlName="password" id="password" placeholder="Enter Password" type='password'/>
+    </span>
+      <div class="button-container">
+        <button (click)="onSubmit()" class="login-button box_shadow bg-black" type="button">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+
