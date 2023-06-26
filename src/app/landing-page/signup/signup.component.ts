@@ -18,7 +18,8 @@ export class SignupComponent {
 
   form = new FormGroup( {
     username: new FormControl(),
-    password: new FormControl()
+    password: new FormControl(),
+    name: new FormControl(),
   });
 
   ngOnInit() {
@@ -29,6 +30,7 @@ export class SignupComponent {
       let user = new User();
       user.username = this.form.value.username;
       user.password = this.form.value.password;
+      user.name = this.form.value.name;
 
       // Login the user if valid credentials, else show error message if observable sends error
       this.userService.createUser(user).pipe(

@@ -22,6 +22,7 @@ import { NewsFeedComponent } from './home/news-feed/news-feed.component';
 import { PostComponent } from './home/news-feed/post-feed/post.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './landing-page/signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SignupComponent } from './landing-page/signup/signup.component';
     PostComponent,
     HomeComponent,
     SignupComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
