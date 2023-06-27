@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from "./news-feed/post-feed/post.model";
+import {PostsService} from "../posts.service";
 
 @Component({
   selector: 'app-home',
@@ -7,54 +8,14 @@ import {Post} from "./news-feed/post-feed/post.model";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  constructor() {
+  constructor(public postService: PostsService) {
   }
   public newsFeedPosts: Post[] = [];
+  getAllPosts(): void {
+    this.postService.getAllPosts().subscribe(newsFeedPosts => this.newsFeedPosts = newsFeedPosts);
+  }
 
-  ngOnInit(): void{
-    this.newsFeedPosts = [
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-      {
-        profilePhoto: "picture",
-        name: "name",
-        date: "today's date",
-        postText: "text",
-        currentLikes: 1,
-      } as Post,
-    ];
+  ngOnInit(): void {
+    this.getAllPosts();
   }
 }

@@ -1,10 +1,16 @@
 export class Post {
   public profilePhoto: string = '';
-  public name: string = '';
-  public date: string = '';
+  public username: string = '';
   public postText: string = '';
-  public currentLikes: number = 0;
-
   constructor(){
+  }
+  public getUsername(): string {
+    return this.username;
+  }
+  public getProfilePhoto(): string {
+    return this.profilePhoto;
+  }
+  public getPostText(): string {
+    return this.postText;
   }
 }

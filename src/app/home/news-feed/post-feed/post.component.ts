@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "./post.model";
+import {PostsService} from "../../../posts.service";
 
 
 @Component({
@@ -10,11 +11,9 @@ import {Post} from "./post.model";
 export class PostComponent implements OnInit {
 
   @Input()
-  // @ts-ignore
-  public post: Post;
-
-  constructor() { }
-
+  public post: Post = new Post();
+  constructor(public postService: PostsService) { }
   ngOnInit(): void {
+    this.postService.getPost();
   }
 }

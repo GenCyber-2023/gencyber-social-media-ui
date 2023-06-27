@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatIconModule } from "@angular/material/icon";
 import {AppRoutingModule} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -22,7 +21,8 @@ import { NewsFeedComponent } from './home/news-feed/news-feed.component';
 import { PostComponent } from './home/news-feed/post-feed/post.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './landing-page/signup/signup.component';
-import { ProfileComponent } from './profile/profile.component';
+import { MatIconModule } from "@angular/material/icon";
+
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import { ProfileComponent } from './profile/profile.component';
     PostComponent,
     HomeComponent,
     SignupComponent,
-    ProfileComponent,
   ],
   imports: [
     BrowserModule,
