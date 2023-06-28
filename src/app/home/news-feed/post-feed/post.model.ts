@@ -4,13 +4,12 @@ export class Post {
   public postText: string = '';
   constructor(){
   }
-  public getUsername(): string {
+
+  getUsername(): string {
     return this.username;
   }
-  public getProfilePhoto(): string {
-    return this.profilePhoto;
-  }
-  public getPostText(): string {
+
+  getPostText(): string {
     return this.postText;
   }
 }

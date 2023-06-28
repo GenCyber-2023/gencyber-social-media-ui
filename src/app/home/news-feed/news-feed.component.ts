@@ -11,8 +11,7 @@ import {PostsService} from "../../posts.service";
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  @Input()
-  public posts: Post[] = [];
+  @Input() posts: Post[] = [];
   // @ts-ignore
   postForm: FormGroup;
   constructor(private formBuilder: FormBuilder, public userService: UserService, public postService: PostsService) { }

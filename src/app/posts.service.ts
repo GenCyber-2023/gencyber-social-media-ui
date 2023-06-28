@@ -23,7 +23,19 @@ export class PostsService {
   }
   getAllPosts(): Observable<Post[]> {
     const url = `${this.postURL}/all`;
-    return this.http.get<Post[]>(url).pipe(tap( _ => this.log('Fetched Posts')),
+    // @ts-ignore
+    return this.http.get<Post[]>(url).pipe(
+      tap(posts => console.log('Response from backend:', posts)),
+      map(posts => {
+        return posts.map(post => {
+          return {
+            profilePhoto: post.profilePhoto,
+            username: post.username,
+            postContent: post.postText,
+          };
+        });
+      }),
+      tap(_ => this.log('Fetched Posts')),
       catchError(this.handleError<Post[]>('getAllPosts', []))
     );
   }
