@@ -25,9 +25,18 @@ export class NewsFeedComponent implements OnInit {
 
   onSubmit(): void {
     if (this.postForm.valid) {
-      const postContent = this.postForm.value.content;
-      this.postService.createPost(postContent);
-      this.postForm.reset();
+      const postContent = { postContent: this.postForm.value.content }; // Wrap postContent in an object
+      this.postService.createPost(postContent).subscribe(
+        (response) => {
+          // Handle the response as needed
+          console.log('Post created successfully', response);
+          this.postForm.reset();
+        },
+        (error) => {
+          console.error("Error creating post", error);
+          // Handle the error as needed
+        }
+      );
     }
   }
 }
