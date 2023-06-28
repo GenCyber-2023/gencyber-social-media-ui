@@ -13,7 +13,7 @@ export class PostComponent {
   constructor(private postService: PostsService) { }
 
   ngOnInit() {
-    return this.postService.getPost().getPostText() && this.postService.getPost().getUsername();
+    return this.postService.getPost().getPostContent() && this.postService.getPost().getUsername();
   }
 
 }

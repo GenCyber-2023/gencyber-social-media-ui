@@ -1,7 +1,7 @@
 export class Post {
   public profilePhoto: string = '';
   public username: string = '';
-  public postText: string = '';
+  public postContent: string = '';
   constructor(){
   }
 
@@ -9,7 +9,7 @@ export class Post {
     return this.username;
   }
 
-  getPostText(): string {
-    return this.postText;
+  getPostContent(): string {
+    return this.postContent;
   }
 }
