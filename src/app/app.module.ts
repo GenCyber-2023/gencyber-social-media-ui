@@ -22,6 +22,7 @@ import { PostComponent } from './home/news-feed/post-feed/post.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './landing-page/signup/signup.component';
 import { MatIconModule } from "@angular/material/icon";
+import { HackerWindowComponent } from './home/hacker-window/hacker-window.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MatIconModule } from "@angular/material/icon";
     PostComponent,
     HomeComponent,
     SignupComponent,
+    HackerWindowComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, of, tap} from "rxjs";
+import {catchError, Observable, of, tap} from "rxjs";
 import {User} from "./User";
+import {MessageService} from "./message.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,7 @@ export class UserService {
   };
   loginURL: string = 'http://localhost:8080/user'
   private user: User = new User();
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messageService: MessageService) {
     console.log("Started user script");
     if (this.getCookie("username")) {
       this.user.username = this.getCookie("username") || "";
@@ -30,6 +30,12 @@ export class UserService {
         this.setCookie("username", actualUser.username);
       })
     );
+  }
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.loginURL + "/getAll").pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError<User[]>('getAllUsers', []))
+    )
   }
 
   logout(): void {
@@ -85,5 +91,9 @@ export class UserService {
 
   private setCookie(name: string, value: string) {
     document.cookie = name + "=" + value + "; path=/";
+  }
+
+  private log(message: string) {
+    this.messageService.add('PostService: ${message}');
   }
 }
