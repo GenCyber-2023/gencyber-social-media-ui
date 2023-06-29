@@ -17,9 +17,11 @@ export class PostsService {
   postURL: string = 'http://localhost:8080/post';
   // @ts-ignore
   private post: Post = new Post();
+  private posts: Post[] = [];
   private user: User = new User();
   constructor(private http: HttpClient, private userService: UserService, private messageService: MessageService) {
     console.log("Starting script");
+
   }
   getAllPosts(): Observable<Post[]> {
     const url = `${this.postURL}/all`;

@@ -16,13 +16,22 @@ export class UserService {
 
   constructor(private http: HttpClient, private messageService: MessageService) {
     console.log("Started user script");
-    if (this.getCookie("username")) {
-      this.user.username = this.getCookie("username") || "";
 
+    const storedUsername = this.getCookie("username");
+    const storedUser = localStorage.getItem("currentUser");
+
+    if (storedUser) {
+      this.user = JSON.parse(storedUser);
+    } else if (storedUsername) {
+      this.getAllUsers().subscribe(users => {
+        const foundUser = users.find(user => user.username === storedUsername);
+        this.user = foundUser || new User();
+        localStorage.setItem("currentUser", JSON.stringify(this.user));
+      });
     } else {
+      this.user = new User();
       this.user.username = "Anonymous";
     }
-
   }
 
   login(attemptedUser: User): Observable<User> {
@@ -49,6 +58,7 @@ export class UserService {
     this.user = new User();
     this.user.username = "";
     this.setCookie("username", "");
+    localStorage.removeItem("currentUser");
   }
 
   createUser(user: User): Observable<User> {
