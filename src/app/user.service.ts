@@ -16,6 +16,13 @@ export class UserService {
 
   constructor(private http: HttpClient, private messageService: MessageService) {
     console.log("Started user script");
+    if (this.getCookie("username")) {
+      this.user.username = this.getCookie("username") || "";
+
+    } else {
+      this.user.username = "Anonymous";
+    }
+
   }
 
   login(attemptedUser: User): Observable<User> {
@@ -23,6 +30,7 @@ export class UserService {
       tap((actualUser) => {
         console.log(`[user service] logged in with`, actualUser);
         this.user = actualUser;
+        this.setCookie("username", actualUser.username);
       })
     );
   }
@@ -33,9 +41,14 @@ export class UserService {
       catchError(this.handleError<User[]>('getAllUsers', []))
     )
   }
+  isLoggedIn(): boolean {
+    return this.user.username !== "Anonymous";
+  }
 
   logout(): void {
     this.user = new User();
+    this.user.username = "";
+    this.setCookie("username", "");
   }
 
   createUser(user: User): Observable<User> {
@@ -70,5 +83,15 @@ export class UserService {
 
   private log(message: string) {
     this.messageService.add(`PostService: ${message}`);
+  }
+  private getCookie(name: string): string | undefined {
+    let value = "; " + document.cookie;
+    let parts = value.split("; " + name + "=") || "";
+    if (parts.length == 2) return parts?.pop()?.split(";")?.shift() || undefined;
+    return undefined;
+  }
+
+  private setCookie(name: string, value: string) {
+    document.cookie = name + "=" + value + "; path=/";
   }
 }

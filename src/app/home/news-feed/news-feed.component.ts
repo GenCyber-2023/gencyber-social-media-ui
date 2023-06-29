@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "./post-feed/post.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../user.service";
-import {Observable} from "rxjs";
 import {PostsService} from "../../posts.service";
 
 @Component({
@@ -12,14 +11,25 @@ import {PostsService} from "../../posts.service";
 })
 export class NewsFeedComponent implements OnInit {
   @Input() posts: Post[] = [];
+  userPicture: string = this.getUserPicture();
+
   // @ts-ignore
   postForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, public userService: UserService, public postService: PostsService) { }
+  constructor(private formBuilder: FormBuilder,
+              public userService: UserService,
+              public postService: PostsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.postForm = this.formBuilder.group({
       content: ['', Validators.required]
     });
+    this.userService.getUser();
+  }
+
+  getUserPicture(): string {
+    console.log("fetching user photo")
+    console.log("This is the photo url: " + this.userService.getUser().profilePhoto)
+    return this.userService.getUser().profilePhoto;
   }
 
   onSubmit(): void {

@@ -14,11 +14,16 @@ export class HomeComponent implements OnInit{
   }
   public newsFeedPosts: Post[] = [];
   public users: User[] = [];
+
   getAllUsers(): void {
     this.userService.getAllUsers().subscribe(users => this.users = users);
   }
   getAllPosts(): void {
     this.postService.getAllPosts().subscribe(newsFeedPosts => this.newsFeedPosts = newsFeedPosts);
+  }
+
+  isLoggedIn() {
+    this.userService.isLoggedIn();
   }
 
   ngOnInit(): void {

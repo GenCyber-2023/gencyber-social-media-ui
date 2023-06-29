@@ -3,11 +3,12 @@
     <form [formGroup]="postForm" class="post-outer">
       <div class="row p-3">
         <div class="col-4 circle me-3">
+          <img [src]="userPicture" alt="User Picture">
         </div>
         <div class="col-4 d-flex flex-column justify-content-center">
           <div class="row">
             <div class="col font-weight-bold">
-              {{ userService.getUser().username }}
+              {{ userService.getUser().username.toString() }}
             </div>
           </div>
         </div>

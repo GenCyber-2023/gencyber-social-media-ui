@@ -1,10 +1,10 @@
-<div class="d-flex flex-row w-100">
+<div class="d-flex flex-row w-100 h-75 p-3 m-3">
   <div class="rounded m-3 col-6 h-auto w-auto hacker-box box_shadow">
     <app-hacker-window [users]="users" class="rounded m-3 col-6 w-auto hacker-box box_shadow"></app-hacker-window>
   </div>
-  <div class="row w-100 overflow-hidden">
-    <div class="m-3 h-100 w-100 justify-content-between overflow-auto">
-      <app-news-feed [posts]="newsFeedPosts" class="w-100 d-flex flex-column justify-content-end p-3"></app-news-feed>
+  <div class="w-100 h-100 overflow-auto">
+    <div class="h-100 overflow-auto" >
+      <app-news-feed [posts]="newsFeedPosts" class="w-100 h-100 overflow-auto d-flex flex-column justify-content-start p-3"></app-news-feed>
     </div>
   </div>
 </div>

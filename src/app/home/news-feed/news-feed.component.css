@@ -31,3 +31,10 @@
   background-image: linear-gradient(to bottom, rgba(250,250,250,.85), rgba(200,200,200,.85));
   padding: 2rem;
 }
+.circle {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+}
