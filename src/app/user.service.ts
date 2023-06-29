@@ -13,13 +13,9 @@ export class UserService {
   };
   loginURL: string = 'http://localhost:8080/user'
   private user: User = new User();
+
   constructor(private http: HttpClient, private messageService: MessageService) {
     console.log("Started user script");
-    if (this.getCookie("username")) {
-      this.user.username = this.getCookie("username") || "";
-    } else {
-      this.user.username = "Anonymous";
-    }
   }
 
   login(attemptedUser: User): Observable<User> {
@@ -27,10 +23,10 @@ export class UserService {
       tap((actualUser) => {
         console.log(`[user service] logged in with`, actualUser);
         this.user = actualUser;
-        this.setCookie("username", actualUser.username);
       })
     );
   }
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.loginURL + "/getAll").pipe(
       tap(_ => this.log('fetched users')),
@@ -40,8 +36,6 @@ export class UserService {
 
   logout(): void {
     this.user = new User();
-    this.user.username = "Anonymous";
-    this.setCookie("username", "");
   }
 
   createUser(user: User): Observable<User> {
@@ -64,14 +58,6 @@ export class UserService {
     return this.user;
   }
 
-  isAdmin(): boolean {
-    return this.user.username.toLowerCase().includes("admin");
-  }
-
-  isLoggedIn(): boolean {
-    return this.user.username !== "Anonymous";
-  }
-
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
@@ -82,18 +68,7 @@ export class UserService {
     };
   }
 
-  private getCookie(name: string): string | undefined {
-    let value = "; " + document.cookie;
-    let parts = value.split("; " + name + "=") || "";
-    if (parts.length == 2) return parts?.pop()?.split(";")?.shift() || undefined;
-    return undefined;
-  }
-
-  private setCookie(name: string, value: string) {
-    document.cookie = name + "=" + value + "; path=/";
-  }
-
   private log(message: string) {
-    this.messageService.add('PostService: ${message}');
+    this.messageService.add(`PostService: ${message}`);
   }
 }
