@@ -23,7 +23,6 @@ export class SignupComponent {
   });
 
   ngOnInit() {
-    this.userService.logout();
   }
   onSubmit() {
     if (this.form.valid) {
@@ -49,6 +48,8 @@ export class SignupComponent {
         (user) => {
           if (user) this.router.navigate(['/home/newsfeed']).then();
         });
-    }
+      this.userService.login(user).subscribe((user) => {
+        if (user) this.router.navigate(['/home/newsfeed']).then();
+    });
   }
-}
+}}

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../user.service";
 import {User} from "../../User";
-import {tsCastToAny} from "@angular/compiler-cli/src/ngtsc/typecheck/src/ts_util";
 
 @Component({
   selector: 'app-hacker-window',
@@ -23,15 +22,14 @@ export class HackerWindowComponent implements OnInit {
       password: ['', Validators.required]
     })
   }
-  onSubmit(user: User): boolean {
+  onSubmit(user: User): void {
     const userInput = this.hackerForm.value.password;
     if (userInput === user.password) {
-      console.log('Password matched! You hacked this account!')
-      return true;
-    }
-    else {
-      console.log('Password incorrect. Try again!')
-      return false;
+      console.log('Password matched! You hacked this account!');
+      user.isHacked = true;
+    } else {
+      console.log('Password incorrect. Try again!');
+      user.isHacked = false;
     }
   }
 }

@@ -3,6 +3,7 @@ export class User {
 	password: string = '';
   profilePhoto: string = '';
   name: string = '';
+  isHacked: boolean = false;
 
 	constructor() {
 	}

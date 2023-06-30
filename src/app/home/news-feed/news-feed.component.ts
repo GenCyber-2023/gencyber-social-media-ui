@@ -24,6 +24,15 @@ export class NewsFeedComponent implements OnInit {
       content: ['', Validators.required]
     });
     this.userService.getUser();
+    this.postService.getAllPosts().subscribe(
+      (posts) => {
+        this.posts = posts.reverse();
+        this.userPicture = this.getUserPicture();
+      },
+      (error) => {
+        console.error("Error fetching posts", error);
+      }
+    );
   }
 
   getUserPicture(): string {
@@ -46,6 +55,7 @@ export class NewsFeedComponent implements OnInit {
           // Handle the error as needed
         }
       );
+      this.ngOnInit();
     }
   }
 }

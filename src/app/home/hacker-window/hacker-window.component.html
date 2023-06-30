@@ -1,18 +1,22 @@
-<div class="p-3 d-flex flex-column align-items-center">
+<div class="d-flex flex-column align-items-center h-100 overflow-auto">
   <h1>Hacker Window</h1>
-  <div *ngFor="let user of users">
-    <ul>
-      <li class="d-flex justify-content-between align-items-center">
-        <img class="col-4 circle me-3" [src]="user.profilePhoto">
-        <label>
-          {{ user.username }}
-        </label>
-        <ng-form [formGroup]="hackerForm" >
-          <input matInput class="m-2" type="text" formControlName="password"/>
-          <button mat-button class="bg-light icon-link-hover" (click)="onSubmit(user)"> Test </button>
-        </ng-form>
+  <ul class="d-flex flex-row align-content-start justify-content-between w-100 me-4" *ngFor="let user of users">
+      <li class="d-flex flex-md-row justify-content-between w-100">
+          <div class="d-flex flex-row align-items-center justify-content-lg-start">
+            <img class="col-4 circle me-3" [src]="user.profilePhoto">
+            <label>
+              {{ user.username }}
+            </label>
+          </div>
+        <div class="d-flex align-items-center justify-content-end">
+          <ng-form [formGroup]="hackerForm" class="d-flex flex-row align-items-center">
+            <input matInput style="height: 2rem" class=" p-2 m-2 border-0 rounded-3 shadow-sm" type="text" formControlName="password" />
+            <button id="onSubmit" mat-button class="bg-light rounded-3 m-3" (click)="onSubmit(user)">Test</button>
+            <mat-icon *ngIf="user.isHacked" class="text-lg rounded-circle text-bg-success">check-box</mat-icon>
+            <mat-icon *ngIf="!user.isHacked" class="text-danger">cancel</mat-icon>
+          </ng-form>
+        </div>
       </li>
-    </ul>
-  </div>
+  </ul>
 </div>
 
