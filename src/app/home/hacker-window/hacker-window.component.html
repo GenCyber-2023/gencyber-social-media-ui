@@ -3,6 +3,7 @@
   <div *ngFor="let user of users">
     <ul>
       <li class="d-flex justify-content-between align-items-center">
+        <img class="col-4 circle me-3" [src]="user.profilePhoto">
         <label>
           {{ user.username }}
         </label>

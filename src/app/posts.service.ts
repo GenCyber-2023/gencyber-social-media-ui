@@ -38,7 +38,7 @@ export class PostsService {
 
   createPost(post: { postContent: any }): Observable<Post> {
     return new Observable<Post>((observer) => {
-      this.http.post<Post>(this.postURL + `/${this.userService.getUser().getUsername()}` + '/create', post, this.httpOptions).subscribe(
+      this.http.post<Post>(this.postURL + `/${this.userService.getUser().username}` + '/create', post, this.httpOptions).subscribe(
         (response) => {
           observer.next(response);
           observer.complete();

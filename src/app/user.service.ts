@@ -90,10 +90,6 @@ export class UserService {
       return of(result as T);
     };
   }
-
-  private log(message: string) {
-    this.messageService.add(`PostService: ${message}`);
-  }
   private getCookie(name: string): string | undefined {
     let value = "; " + document.cookie;
     let parts = value.split("; " + name + "=") || "";
@@ -103,5 +99,8 @@ export class UserService {
 
   private setCookie(name: string, value: string) {
     document.cookie = name + "=" + value + "; path=/";
+  }
+  private log(message: string) {
+    this.messageService.add(`PostService: ${message}`);
   }
 }

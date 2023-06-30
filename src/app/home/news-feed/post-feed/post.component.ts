@@ -46,7 +46,6 @@ export class PostComponent implements OnInit {
     let pictureUrl = '';
     console.log(this.posts);
     console.log(this.users);
-    if (this.users.length > 0 && this.posts.length > 0) {
       for (let i = 0; i < this.users.length; i++) {
         for (let j = 0; j < this.posts.length; j++) {
           if (this.users[i].username === this.posts[j].username) {
@@ -55,7 +54,6 @@ export class PostComponent implements OnInit {
           }
         }
       }
-    }
     return "no posts";
   }
 }
