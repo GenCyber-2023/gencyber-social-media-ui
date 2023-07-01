@@ -49,13 +49,24 @@ export class NewsFeedComponent implements OnInit {
           // Handle the response as needed
           console.log('Post created successfully', response);
           this.postForm.reset();
+          this.fetchPosts(); // Fetch updated list of posts
         },
         (error) => {
           console.error("Error creating post", error);
           // Handle the error as needed
         }
       );
-      this.ngOnInit();
     }
+  }
+
+  private fetchPosts(): void {
+    this.postService.getAllPosts().subscribe(
+      (posts) => {
+        this.posts = posts.reverse();
+      },
+      (error) => {
+        console.error("Error fetching posts", error);
+      }
+    );
   }
 }

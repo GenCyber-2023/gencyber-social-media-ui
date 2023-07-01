@@ -13,7 +13,7 @@ export class PostComponent implements OnInit {
   @Input() post: Post = new Post();
   @Input() posts: Post[] = [];
   users: User[] = [];
-  userPicture: string = this.getUserPicture();
+  userPicture: string = this.getUserPicture(this.post);
 
   constructor(private postService: PostsService, public userService: UserService) {
   }
@@ -34,7 +34,7 @@ export class PostComponent implements OnInit {
     this.postService.getAllPosts().subscribe(
       (posts) => {
         this.posts = posts;
-        this.userPicture = this.getUserPicture();
+        this.userPicture = this.getUserPicture(this.post);
       },
       (error) => {
         console.error("Error fetching posts", error);
@@ -42,18 +42,11 @@ export class PostComponent implements OnInit {
     );
   }
 
-  getUserPicture(): string {
-    let pictureUrl = '';
-    console.log(this.posts);
-    console.log(this.users);
-      for (let i = 0; i < this.users.length; i++) {
-        for (let j = 0; j < this.posts.length; j++) {
-          if (this.users[i].username === this.posts[j].username) {
-            pictureUrl = this.users[i].profilePhoto.toString();
-            return pictureUrl;
-          }
-        }
-      }
-    return "no posts";
+  getUserPicture(post: Post): string {
+    const user = this.users.find((user) => user.username === post.username);
+    if (user) {
+      return user.profilePhoto.toString();
+    }
+    return "no picture";
   }
 }

@@ -10,6 +10,7 @@ import {User} from "../../User";
 })
 export class HackerWindowComponent implements OnInit {
   @Input() users: User[] = [];
+  allAccountsHacked: boolean = false; // Variable to track successful hacking attempts
 
   // @ts-ignore
   hackerForm: FormGroup;
@@ -27,9 +28,14 @@ export class HackerWindowComponent implements OnInit {
     if (userInput === user.password) {
       console.log('Password matched! You hacked this account!');
       user.isHacked = true;
+      this.checkAllAccountsHacked(); // Check if all accounts have been hacked
     } else {
       console.log('Password incorrect. Try again!');
       user.isHacked = false;
     }
+  }
+
+  private checkAllAccountsHacked(): void {
+    this.allAccountsHacked = this.users.every(user => user.isHacked); // Check if all accounts are hacked
   }
 }
