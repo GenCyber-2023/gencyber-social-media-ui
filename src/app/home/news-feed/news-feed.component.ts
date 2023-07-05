@@ -12,6 +12,7 @@ import {PostsService} from "../../posts.service";
 export class NewsFeedComponent implements OnInit {
   @Input() posts: Post[] = [];
   userPicture: string = this.getUserPicture();
+  showPhotoInput: boolean = false;
 
   // @ts-ignore
   postForm: FormGroup;
@@ -41,22 +42,57 @@ export class NewsFeedComponent implements OnInit {
     return this.userService.getUser().profilePhoto;
   }
 
+  togglePostPhoto(): void {
+    this.showPhotoInput = !this.showPhotoInput
+  }
+
   onSubmit(): void {
     if (this.postForm.valid) {
-      const postContent = { postContent: this.postForm.value.content }; // Wrap postContent in an object
-      this.postService.createPost(postContent).subscribe(
-        (response) => {
-          // Handle the response as needed
-          console.log('Post created successfully', response);
-          this.postForm.reset();
-          this.fetchPosts(); // Fetch updated list of posts
-        },
-        (error) => {
-          console.error("Error creating post", error);
-          // Handle the error as needed
-        }
-      );
+      const postContent = { postContent: this.postForm.value.content,
+                            photoURL: ''};
+      const fileInput = document.getElementById('postPhoto') as HTMLInputElement;
+      if (fileInput && fileInput.files && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = (event: any) => {
+          postContent.photoURL = event.target.result;
+          this.createPostWithPhoto(postContent);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        this.createPost(postContent);
+      }
     }
+  }
+
+  private createPostWithPhoto(postContent: any): void {
+    this.postService.createPost(postContent).subscribe(
+      (response) => {
+        // Handle the response as needed
+        console.log('Post created successfully', response);
+        this.postForm.reset();
+        this.fetchPosts(); // Fetch updated list of posts
+      },
+      (error) => {
+        console.error("Error creating post", error);
+        // Handle the error as needed
+      }
+    );
+  }
+
+  private createPost(postContent: any): void {
+    this.postService.createPost(postContent).subscribe(
+      (response) => {
+        // Handle the response as needed
+        console.log('Post created successfully', response);
+        this.postForm.reset();
+        this.fetchPosts(); // Fetch updated list of posts
+      },
+      (error) => {
+        console.error("Error creating post", error);
+        // Handle the error as needed
+      }
+    );
   }
 
   private fetchPosts(): void {

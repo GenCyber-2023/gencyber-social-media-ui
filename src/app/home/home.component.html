@@ -1,10 +1,10 @@
 <div style="height: 80%" class="d-flex flex-row w-100 p-3 mt-3">
-  <div class="overflow-auto rounded m-3 w-50 p-3 h-100 hacker-box box_shadow">
+  <div class="overflow-auto rounded m-3 w-50 p-3  hacker-box box_shadow">
     <app-hacker-window [users]="users"></app-hacker-window>
   </div>
-  <div class="w-100 h-100 overflow-auto">
-    <div class="h-100 overflow-auto" >
-      <app-news-feed [posts]="newsFeedPosts" class="w-100 h-100 overflow-auto d-flex flex-column justify-content-start p-3"></app-news-feed>
+  <div class="w-100 overflow-auto ">
+    <div style="height: 98%;" class="overflow-auto rounded-3 " >
+      <app-news-feed [posts]="newsFeedPosts" class="box_shadow w-100 h-100 overflow-auto d-flex flex-column justify-content-start p-3"></app-news-feed>
     </div>
   </div>
 </div>

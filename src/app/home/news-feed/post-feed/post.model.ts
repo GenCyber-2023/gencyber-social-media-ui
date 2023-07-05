@@ -2,6 +2,7 @@ export class Post {
   public profilePhoto: string = '';
   public username: string = '';
   public postContent: string = '';
+  public photoURL: string = '';
   constructor(){
   }
 
@@ -11,5 +12,9 @@ export class Post {
 
   getPostContent(): string {
     return this.postContent;
+  }
+
+  getPhotoURL(): string {
+    return this.photoURL;
   }
 }

@@ -45,3 +45,13 @@
   display: flex;
   justify-content: space-around;
 }
+.image-wrapper {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+}

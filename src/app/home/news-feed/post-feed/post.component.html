@@ -17,6 +17,11 @@
         {{ post.postContent }}
       </div>
     </div>
+    <div *ngIf="post.photoURL" class="row m-2 p-3">
+      <div class="image-wrapper">
+        <img class="rounded-2" src="{{post.photoURL}}" alt="user post photo">
+      </div>
+    </div>
 
     <div class="row p-3 d-flex justify-content-around">
       <div class="col-3 d-flex flex-md-row justify-content-center align-content-center">
