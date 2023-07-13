@@ -14,7 +14,7 @@ export class PostsService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  postURL: string = 'http://localhost:8080/post';
+  postURL: string = 'http://10.161.2.38:8080/post';
   // @ts-ignore
   private post: Post = new Post();
   private posts: Post[] = [];
