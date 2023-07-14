@@ -11,7 +11,7 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
-  loginURL: string = 'http://localhost:8080/user'
+  loginURL: string = 'http://10.161.2.38:8080/user'
   private user: User = new User();
 
   constructor(private http: HttpClient, private messageService: MessageService) {
